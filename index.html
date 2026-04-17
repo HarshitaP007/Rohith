@@ -3,278 +3,540 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rohith Maddina | Full Stack Java Developer • Cloud-Native • Microservices • AWS & Azure" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Rohith Maddina - Full Stack Java Developer portfolio" />
   <title>Rohith Maddina | Full Stack Developer</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
   <style>
     :root{
       --bg:#07111f;
-      --bg2:#0b1b31;
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.09);
-      --text:#e5eefc;
-      --muted:#9db0cc;
-      --line:rgba(255,255,255,.12);
-      --accent:#7c3aed;
-      --accent2:#22d3ee;
-      --accent3:#14b8a6;
+      --bg2:#0b1730;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.12);
+      --text:#eaf2ff;
+      --muted:#a8b3c7;
+      --accent:#6ee7ff;
+      --accent2:#8b5cf6;
+      --success:#34d399;
+      --border:rgba(255,255,255,.16);
       --shadow:0 20px 60px rgba(0,0,0,.35);
-      --radius:22px;
     }
-    *{box-sizing:border-box}
+
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      margin:0;
       font-family:'Inter',sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(124,58,237,.22), transparent 28%),
-        radial-gradient(circle at top right, rgba(34,211,238,.15), transparent 22%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--text);
-      line-height:1.6;
+      background:
+        radial-gradient(circle at top left, rgba(110,231,255,.18), transparent 25%),
+        radial-gradient(circle at top right, rgba(139,92,246,.18), transparent 24%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1180px;margin:auto;padding:24px}
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:80px 80px;
+      mask-image:radial-gradient(circle at center, black, transparent 80%);
+      pointer-events:none;
+      opacity:.25;
+    }
+
+    .container{width:min(1200px,92%);margin:0 auto}
     .nav{
+      position:sticky;top:18px;z-index:50;
+      margin:18px auto 0;
+      width:min(1200px,92%);
+      backdrop-filter:blur(20px);
+      background:rgba(8,15,30,.55);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
       display:flex;justify-content:space-between;align-items:center;
-      padding:18px 0; position:sticky; top:0; backdrop-filter:blur(14px);
-      background:linear-gradient(180deg, rgba(7,17,31,.8), rgba(7,17,31,.3));
-      z-index:20;
+      padding:16px 22px;
+      animation:slideDown .8s ease both;
     }
-    .brand{font-weight:800;letter-spacing:.4px}
-    .navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}
+    .brand{font-weight:800;letter-spacing:.5px}
+    .brand span{color:var(--accent)}
+    .nav a{color:var(--text);text-decoration:none;margin-left:18px;font-size:.95rem;opacity:.88}
+    .nav a:hover{color:var(--accent)}
+
     .hero{
-      display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:center;
-      min-height:82vh;padding:24px 0 40px;
+      padding:90px 0 40px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+      min-height:calc(100vh - 120px);
     }
-    .tag{
-      display:inline-flex;align-items:center;gap:10px;
-      border:1px solid var(--line);background:rgba(255,255,255,.05);
-      padding:10px 14px;border-radius:999px;color:#cfe3ff;font-size:13px;
+
+    .hero h1{
+      font-size:clamp(2.5rem,6vw,5.6rem);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:18px;
+      animation:fadeUp .9s ease .1s both;
     }
-    .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
-    h1{font-size:clamp(44px,6vw,78px);line-height:.95;margin:18px 0 16px}
-    .lead{color:var(--muted);font-size:18px;max-width:760px}
-    .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .hero h1 .grad{
+      background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .subtitle{
+      font-size:1.1rem;
+      color:var(--muted);
+      max-width:760px;
+      line-height:1.8;
+      margin-bottom:28px;
+      animation:fadeUp .9s ease .2s both;
+    }
+
+    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+    .pill{
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:999px;
+      backdrop-filter:blur(16px);
+      font-size:.92rem;
+      color:#d9e6ff;
+      animation:fadeUp .9s ease .3s both;
+    }
+
+    .btns{display:flex;flex-wrap:wrap;gap:14px}
     .btn{
-      padding:14px 20px;border-radius:14px;border:1px solid var(--line);
-      background:rgba(255,255,255,.06);font-weight:600
+      display:inline-flex;align-items:center;gap:10px;
+      padding:14px 20px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s ease;
+      border:1px solid transparent;
     }
     .btn.primary{
       background:linear-gradient(135deg,var(--accent),var(--accent2));
-      border:none;color:#fff
+      color:#08111e;
+      box-shadow:0 10px 30px rgba(110,231,255,.25);
     }
-    .panel{
-      border:1px solid var(--line);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-radius:var(--radius);box-shadow:var(--shadow)
+    .btn.secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+      border-color:var(--border);
     }
-    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .stat{padding:18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
-    .stat strong{display:block;font-size:28px;margin-bottom:6px}
-    section{padding:30px 0}
-    .section-title{font-size:28px;margin:0 0 18px}
-    .grid{display:grid;gap:18px}
-    .skills{grid-template-columns:repeat(4,1fr)}
-    .pill{
-      display:inline-block;padding:10px 14px;margin:8px 8px 0 0;border-radius:999px;
-      background:rgba(255,255,255,.06);border:1px solid var(--line);color:#d9e7fb;font-size:14px
+    .btn:hover{transform:translateY(-3px) scale(1.01)}
+
+    .hero-card{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(20px);
+      animation:floatCard 6s ease-in-out infinite;
     }
-    .card{padding:22px}
-    .exp,.proj{grid-template-columns:repeat(2,1fr)}
-    .item h3,.proj h3{margin:0 0 6px}
-    .meta{color:var(--accent2);font-size:13px;font-weight:600;margin-bottom:10px}
-    .muted{color:var(--muted)}
-    .list{padding-left:18px;margin:14px 0 0}
-    .list li{margin:8px 0}
-    .project-tags{margin-top:14px}
-    .footer{
-      padding:30px 0 50px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
+    .profile{
+      height:300px;
+      border-radius:22px;
+      background:
+        radial-gradient(circle at top, rgba(110,231,255,.35), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(139,92,246,.35), transparent 35%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.14);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:22px;
+      overflow:hidden;
+      position:relative;
     }
-    .accent{color:#a78bfa}
+    .profile::after{
+      content:'AI • CLOUD • JAVA • REACT';
+      position:absolute;top:18px;left:18px;
+      font-size:.8rem;letter-spacing:4px;
+      color:rgba(255,255,255,.75);
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    .stat{
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      text-align:center;
+    }
+    .stat strong{display:block;font-size:1.45rem}
+    .stat span{color:var(--muted);font-size:.88rem}
+
+    section{padding:70px 0}
+    .section-title{
+      font-size:2rem;
+      margin-bottom:16px;
+      letter-spacing:-1px;
+    }
+    .section-sub{color:var(--muted);max-width:760px;line-height:1.8;margin-bottom:26px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      transition:.35s ease;
+      transform:translateY(18px);
+      opacity:0;
+    }
+    .card.visible{transform:translateY(0);opacity:1}
+    .card:hover{transform:translateY(-6px)}
+    .card h3{margin-bottom:10px}
+    .card p,.card li{color:var(--muted);line-height:1.7;font-size:.95rem}
+    .card ul{padding-left:18px}
+
+    .timeline{
+      display:grid;
+      gap:18px;
+    }
+    .exp{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:18px;
+      padding:22px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      backdrop-filter:blur(18px);
+    }
+    .exp .role{font-weight:700;font-size:1.05rem}
+    .exp .meta{color:var(--muted);font-size:.92rem;margin-top:6px}
+    .exp ul{padding-left:18px;margin-top:12px}
+    .exp li{margin-bottom:8px;color:#d7e2f5;line-height:1.6}
+
+    .projects .project{
+      position:relative;
+      overflow:hidden;
+    }
+    .project::before{
+      content:'';
+      position:absolute;inset:-2px;
+      background:linear-gradient(135deg, rgba(110,231,255,.18), rgba(139,92,246,.18), transparent 70%);
+      opacity:0;
+      transition:.4s ease;
+    }
+    .project:hover::before{opacity:1}
+    .project .tag{
+      display:inline-block;
+      margin-top:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      color:#dbe7ff;
+      font-size:.8rem;
+    }
+
+    .chatbot{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:min(380px,calc(100% - 40px));
+      background:rgba(7,17,31,.9);
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(20px);
+      overflow:hidden;
+      z-index:60;
+    }
+    .chat-head{
+      padding:14px 16px;
+      display:flex;justify-content:space-between;align-items:center;
+      background:rgba(255,255,255,.05);
+      cursor:pointer;
+    }
+    .chat-body{display:none;padding:16px}
+    .chatbot.open .chat-body{display:block}
+    .messages{display:grid;gap:10px;max-height:220px;overflow:auto;padding-right:4px}
+    .msg{
+      padding:12px 14px;border-radius:16px;font-size:.92rem;line-height:1.6;
+      max-width:92%;
+    }
+    .msg.ai{background:rgba(110,231,255,.1);border:1px solid rgba(110,231,255,.15)}
+    .msg.user{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.16);margin-left:auto}
+    .chat-input{
+      display:flex;gap:10px;margin-top:12px
+    }
+    .chat-input input{
+      flex:1;padding:12px 14px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(255,255,255,.05);color:var(--text);outline:none;
+    }
+    .chat-input button{
+      padding:12px 14px;border:none;border-radius:14px;cursor:pointer;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111e;font-weight:700;
+    }
+
+    footer{
+      padding:30px 0 44px;
+      color:var(--muted);
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:40px;
+    }
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
     @media (max-width: 900px){
-      .hero,.skills,.exp,.proj{grid-template-columns:1fr}
-      .nav{flex-direction:column;gap:10px}
-      .navlinks{flex-wrap:wrap;justify-content:center}
-      h1{font-size:clamp(38px,12vw,62px)}
+      .hero,.exp{grid-template-columns:1fr}
+      .nav{flex-direction:column;gap:12px}
+      .nav a{margin:0 10px}
+      .hero{padding-top:50px}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <div class="brand">Rohith Maddina</div>
-      <div class="navlinks">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+  <nav class="nav">
+    <div class="brand">ROHITH<span>.</span></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-    <main class="hero">
+  <main class="container">
+    <section class="hero">
       <div>
-        <div class="tag"><span class="dot"></span> Full Stack Java Developer • Cloud-Native • Microservices</div>
-        <h1>Building elegant, scalable software that feels fast, reliable, and human.</h1>
-        <p class="lead">
-          I’m Rohith Maddina, a Full Stack Java Developer with 4+ years of experience delivering production-grade applications across fintech and healthcare.
-          I specialize in Spring Boot microservices, React, Angular, AWS, Azure DevOps, CI/CD automation, and secure API design.
+        <h1>Software Engineer<br><span class="grad">Full Stack Java Developer</span></h1>
+        <p class="subtitle">
+          I build high-performance, cloud-native platforms with Java, Spring Boot, React, AWS, and secure API architectures.
+          I focus on elegant UX, scalable backend systems, and measurable outcomes.
         </p>
-        <div class="cta">
-          <a class="btn primary" href="mailto:rohithm5714@gmail.com">Hire Me</a>
-          <a class="btn" href="https://www.linkedin.com/in/rohithseshasaimaddina" target="_blank">LinkedIn</a>
-          <a class="btn" href="#projects">View Projects</a>
+
+        <div class="pill-row">
+          <div class="pill">Java 8–17</div>
+          <div class="pill">Spring Boot Microservices</div>
+          <div class="pill">React 18 / Angular</div>
+          <div class="pill">AWS / Azure DevOps</div>
+          <div class="pill">OAuth2 / JWT / Keycloak</div>
+        </div>
+
+        <div class="btns">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="mailto:rohithm5714@gmail.com">Hire Me</a>
         </div>
       </div>
 
-      <div class="panel card">
-        <div class="stats">
-          <div class="stat">
-            <strong>4+</strong>
-            <span class="muted">Years of experience</span>
-          </div>
-          <div class="stat">
-            <strong>12+</strong>
-            <span class="muted">Microservices shipped</span>
-          </div>
-          <div class="stat">
-            <strong>35%</strong>
-            <span class="muted">Faster data retrieval</span>
-          </div>
-          <div class="stat">
-            <strong>40%</strong>
-            <span class="muted">Fewer deployment failures</span>
+      <div class="hero-card">
+        <div class="profile">
+          <div>
+            <h2 style="font-size:1.5rem;margin-bottom:8px;">Building enterprise-grade experiences</h2>
+            <p style="color:var(--muted);line-height:1.7;">Cloud systems, responsive UIs, secure integrations, and AI-assisted workflows.</p>
           </div>
         </div>
+        <div class="stats">
+          <div class="stat"><strong>4+</strong><span>Years Experience</span></div>
+          <div class="stat"><strong>35%</strong><span>Faster Data Retrieval</span></div>
+          <div class="stat"><strong>40%</strong><span>Fewer Deploy Failures</span></div>
+          <div class="stat"><strong>60%</strong><span>Faster Page Loads</span></div>
+        </div>
       </div>
-    </main>
+    </section>
 
     <section id="about">
       <h2 class="section-title">About</h2>
-      <div class="panel card">
-        <p class="muted">
-          I build polished user experiences and robust backend systems with a strong focus on performance, security, and maintainability.
-          My work spans Java, Spring Boot, React, Angular, AWS, Docker, Kubernetes, OAuth2/JWT, and data-driven debugging.
-          I enjoy turning complex business workflows into clean software that scales smoothly.
-        </p>
+      <p class="section-sub">
+        Full Stack Java Developer with experience across financial services and healthcare, delivering scalable systems, secure APIs, and polished frontends.
+      </p>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>What I do</h3>
+          <p>Build microservices, modern SPAs, and cloud-native workflows with a strong focus on performance and reliability.</p>
+        </div>
+        <div class="card reveal">
+          <h3>How I work</h3>
+          <p>Engineer clean architecture, automate delivery, and use observability to reduce incident time and improve stability.</p>
+        </div>
+        <div class="card reveal">
+          <h3>What I value</h3>
+          <p>Strong UI polish, maintainable code, and systems that make a measurable business impact.</p>
+        </div>
       </div>
     </section>
 
     <section id="skills">
       <h2 class="section-title">Skills</h2>
-      <div class="panel card">
-        <div>
-          <span class="pill">Java 8–17</span>
-          <span class="pill">Spring Boot</span>
-          <span class="pill">Spring Security</span>
-          <span class="pill">Microservices</span>
-          <span class="pill">React 18</span>
-          <span class="pill">Angular</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">Oracle</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">MongoDB</span>
-          <span class="pill">AWS</span>
-          <span class="pill">Azure DevOps</span>
-          <span class="pill">Docker</span>
-          <span class="pill">Kubernetes</span>
-          <span class="pill">Jenkins</span>
-          <span class="pill">OAuth2 / JWT</span>
-          <span class="pill">Git</span>
-          <span class="pill">JUnit / Mockito</span>
-        </div>
+      <div class="grid">
+        <div class="card reveal"><h3>Frontend</h3><p>React 18, Angular, Redux, TypeScript, HTML5, CSS3, Bootstrap</p></div>
+        <div class="card reveal"><h3>Backend</h3><p>Spring Boot, Spring MVC, Spring Security, Hibernate, JPA</p></div>
+        <div class="card reveal"><h3>Cloud & DevOps</h3><p>AWS, Azure DevOps, Docker, Kubernetes, Jenkins, CircleCI</p></div>
+        <div class="card reveal"><h3>Data & Security</h3><p>Oracle, PostgreSQL, MongoDB, OAuth2, JWT, Keycloak</p></div>
       </div>
     </section>
 
     <section id="experience">
       <h2 class="section-title">Experience</h2>
-      <div class="grid exp">
-        <div class="panel card item">
-          <h3>Software Engineer — Capital One</h3>
-          <div class="meta">Feb 2024 – Present • McLean, VA</div>
-          <p class="muted">Architecting cloud-native systems for financial workflows with an emphasis on scale, observability, and reliability.</p>
-          <ul class="list muted">
-            <li>Built 12+ Spring Boot microservices for financial transactions and ticketing.</li>
-            <li>Reduced SQL execution time by 35% with indexing and query optimization.</li>
-            <li>Improved frontend load times by 25% using React, lazy loading, and code splitting.</li>
-            <li>Automated CI/CD pipelines, cutting deployment failures by 40%.</li>
-          </ul>
+      <div class="timeline">
+        <div class="exp reveal">
+          <div>
+            <div class="role">Software Engineer — Capital One</div>
+            <div class="meta">Feb 2024 – Present</div>
+          </div>
+          <div>
+            <ul>
+              <li>Built 12+ Spring Boot microservices for transaction and ticketing workflows.</li>
+              <li>Cut page load time by 25% with React 18 + TypeScript optimizations.</li>
+              <li>Reduced deployment failures by 40% with Jenkins, Docker, and Kubernetes automation.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="panel card item">
-          <h3>Java Full Stack Developer — CVS Health</h3>
-          <div class="meta">Jun 2021 – Jul 2023 • Hartford, CT</div>
-          <p class="muted">Delivered healthcare portals, APIs, and infrastructure improvements supporting users and internal teams.</p>
-          <ul class="list muted">
-            <li>Rebuilt a patient portal as an Angular SPA, reducing reload time by 60%.</li>
-            <li>Delivered 20+ REST APIs with Spring Boot, Hibernate, and JPA.</li>
-            <li>Automated builds and deployments, reducing manual release effort by 70%.</li>
-            <li>Provisioned AWS infrastructure and Lambda-based workflows with CloudFormation.</li>
-          </ul>
+        <div class="exp reveal">
+          <div>
+            <div class="role">Java Full Stack Developer — CVS Health</div>
+            <div class="meta">Jun 2021 – Jul 2023</div>
+          </div>
+          <div>
+            <ul>
+              <li>Rebuilt a patient-facing portal in Angular and reduced reload time by 60%.</li>
+              <li>Delivered 20+ REST APIs and improved healthcare claims workflows.</li>
+              <li>Automated release pipelines and shortened deployment cycles from 2 days to under 4 hours.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="projects">
       <h2 class="section-title">Featured Projects</h2>
-      <div class="grid proj">
-        <div class="panel card">
-          <h3>FinFlow Ledger</h3>
-          <div class="meta">Fintech • Spring Boot • React • Stripe • AWS</div>
-          <p class="muted">A secure payments and transaction management platform with idempotent processing, webhook reconciliation, and audit-ready reporting.</p>
-          <div class="project-tags">
-            <span class="pill">Microservices</span><span class="pill">Stripe API</span><span class="pill">JWT</span><span class="pill">PostgreSQL</span>
-          </div>
+      <p class="section-sub">
+        These projects are tailored to your background and the kind of work you likely want to showcase as a full stack developer.
+      </p>
+      <div class="grid">
+        <div class="card project reveal">
+          <h3>FinFlow Payments Platform</h3>
+          <p>Secure Spring Boot payment orchestration system with Stripe integration, idempotent retries, webhook reconciliation, and audit-ready transaction tracking.</p>
+          <span class="tag">Java • Spring Boot • Stripe • AWS</span>
         </div>
-
-        <div class="panel card">
-          <h3>HealthPort One</h3>
-          <div class="meta">Healthcare • Angular • Spring Boot • Oracle</div>
-          <p class="muted">A patient-facing portal with fast navigation, form-heavy workflows, role-based access, and API-driven claims tracking.</p>
-          <div class="project-tags">
-            <span class="pill">Angular SPA</span><span class="pill">REST APIs</span><span class="pill">Redux</span><span class="pill">OAuth2</span>
-          </div>
+        <div class="card project reveal">
+          <h3>HealthSync Patient Portal</h3>
+          <p>Angular-based healthcare portal with dynamic forms, role-based access, caching, and API integration for appointments, claims, and clinical data.</p>
+          <span class="tag">Angular • Redux • REST APIs • OAuth2</span>
         </div>
-
-        <div class="panel card">
-          <h3>DeploySense</h3>
-          <div class="meta">DevOps • Jenkins • Docker • Kubernetes • AWS</div>
-          <p class="muted">A CI/CD observability project that tracks pipeline health, rollback readiness, smoke test outcomes, and release confidence.</p>
-          <div class="project-tags">
-            <span class="pill">CI/CD</span><span class="pill">Kubernetes</span><span class="pill">CloudWatch</span><span class="pill">Automation</span>
-          </div>
+        <div class="card project reveal">
+          <h3>CloudOps Deployment Console</h3>
+          <p>DevOps dashboard for deployment visibility, rollback controls, pipeline health, and observability insights across Kubernetes services.</p>
+          <span class="tag">Docker • Kubernetes • Jenkins • Splunk</span>
         </div>
-
-        <div class="panel card">
-          <h3>InsightPulse</h3>
-          <div class="meta">Data • Python • Power BI • SQL</div>
-          <p class="muted">A lightweight analytics dashboard for anomaly detection, trend insights, and executive reporting across operational datasets.</p>
-          <div class="project-tags">
-            <span class="pill">Python</span><span class="pill">Data Pipelines</span><span class="pill">Dashboards</span><span class="pill">ML</span>
-          </div>
+        <div class="card project reveal">
+          <h3>AI Risk Signal Engine</h3>
+          <p>Python-based anomaly detection and churn prediction pipeline that transforms transaction data into actionable risk indicators.</p>
+          <span class="tag">Python • ML • SQL • BI</span>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="panel card">
-        <p class="muted">
-          Email: <a class="accent" href="mailto:rohithm5714@gmail.com">rohithm5714@gmail.com</a> •
-          Phone: +1 925-877-4566 •
-          LinkedIn: <a class="accent" href="http://www.linkedin.com/in/rohithseshasaimaddina" target="_blank">Profile</a>
-        </p>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>Email</h3>
+          <p><a href="mailto:rohithm5714@gmail.com" style="color:var(--accent)">rohithm5714@gmail.com</a></p>
+        </div>
+        <div class="card reveal">
+          <h3>LinkedIn</h3>
+          <p><a href="http://www.linkedin.com/in/rohithseshasaimaddina" target="_blank" style="color:var(--accent)">linkedin.com/in/rohithseshasaimaddina</a></p>
+        </div>
+        <div class="card reveal">
+          <h3>GitHub</h3>
+          <p>Replace this with your GitHub profile link once you connect your repositories.</p>
+        </div>
       </div>
     </section>
+  </main>
 
-    <div class="footer">
-      <div>© 2026 Rohith Maddina</div>
-      <div>Full Stack Java Developer • Cloud-Native • Microservices</div>
+  <div class="chatbot open" id="chatbot">
+    <div class="chat-head" onclick="toggleChat()">
+      <strong>AI Portfolio Assistant</strong>
+      <span id="chatState">Open</span>
+    </div>
+    <div class="chat-body">
+      <div class="messages" id="messages">
+        <div class="msg ai">Hi, I’m Rohith’s AI assistant. I can answer questions about skills, experience, or projects.</div>
+      </div>
+      <div class="chat-input">
+        <input id="userInput" placeholder="Ask about my background..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
     </div>
   </div>
+
+  <footer>
+    Designed for Rohith Maddina — Full Stack Java Developer
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    function toggleChat(){
+      const box = document.getElementById('chatbot');
+      const state = document.getElementById('chatState');
+      box.classList.toggle('open');
+      state.textContent = box.classList.contains('open') ? 'Open' : 'Closed';
+    }
+
+    function sendMessage(){
+      const input = document.getElementById('userInput');
+      const messages = document.getElementById('messages');
+      const text = input.value.trim();
+      if(!text) return;
+      const user = document.createElement('div');
+      user.className = 'msg user';
+      user.textContent = text;
+      messages.appendChild(user);
+
+      const reply = document.createElement('div');
+      reply.className = 'msg ai';
+      const q = text.toLowerCase();
+      if(q.includes('experience')) reply.textContent = 'Rohith has 4+ years of experience across financial services and healthcare, focused on Java, Spring Boot, React, AWS, and CI/CD.';
+      else if(q.includes('project')) reply.textContent = 'Featured projects include a payments platform, a healthcare portal, a DevOps console, and an AI risk engine.';
+      else if(q.includes('skills')) reply.textContent = 'Core skills include Java, Spring Boot, React, Angular, AWS, Docker, Kubernetes, OAuth2, JWT, and SQL.';
+      else reply.textContent = 'I can help with Rohith’s skills, projects, experience, and contact details.';
+      setTimeout(() => {
+        messages.appendChild(reply);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+
+      input.value = '';
+    }
+  </script>
 </body>
 </html>
