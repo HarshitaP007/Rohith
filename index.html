@@ -41,7 +41,6 @@
       cursor:none;
     }
 
-    /* ── noise grain ── */
     body::before{
       content:'';
       position:fixed;inset:0;
@@ -53,7 +52,6 @@
       z-index:0;
     }
 
-    /* ── floating dust ── */
     .dust{
       position:fixed;inset:0;
       pointer-events:none;overflow:hidden;z-index:0;
@@ -66,7 +64,6 @@
       filter:blur(1.5px);
     }
 
-    /* ── custom cursor: crosshair ring ── */
     .cursor-ring{
       width:28px;height:28px;
       border-radius:50%;
@@ -85,7 +82,6 @@
       pointer-events:none;z-index:999;
       transform:translate(-50%,-50%);
     }
-    /* crosshair lines */
     .cursor-ring::before,.cursor-ring::after{
       content:'';
       position:absolute;
@@ -109,7 +105,6 @@
 
     .container{width:min(1200px,92%);margin:0 auto;position:relative;z-index:1}
 
-    /* ── NAV ── */
     .nav{
       position:sticky;top:14px;z-index:40;
       margin:14px auto 0;
@@ -139,7 +134,6 @@
     }
     .nav a:hover{color:var(--accent)}
 
-    /* ── HERO ── */
     .hero{
       padding:90px 0 50px;
       display:grid;
@@ -180,17 +174,15 @@
       color:transparent;
     }
 
-    /* Rotating title — loop tape style */
     .title-wrap{
-  font-size:clamp(1rem,1.8vw,1.25rem);
-  color:var(--muted);
-  margin-bottom:24px;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  height:38px;
-}
-    .title-label{font-weight:600;color:var(--text);white-space:nowrap}
+      font-size:clamp(1rem,1.8vw,1.25rem);
+      color:var(--muted);
+      margin-bottom:24px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      height:38px;
+    }
     .title-tape{
       display:flex;
       flex-direction:column;
@@ -248,7 +240,6 @@
     }
     .btn:hover{transform:translateY(-3px)}
 
-    /* hero card */
     .hero-card{
       background:linear-gradient(160deg,rgba(255,248,240,.88),rgba(240,225,205,.72));
       border:1px solid rgba(107,58,31,.12);
@@ -293,7 +284,6 @@
     }
     .stat span{color:var(--muted);font-size:.82rem}
 
-    /* ── SECTIONS ── */
     section{padding:72px 0}
     .section-title{
       font-family:'Cormorant Garamond',serif;
@@ -305,18 +295,26 @@
       line-height:1.85;margin-bottom:28px;font-size:.97rem;
     }
 
-    /* cards */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+
+    /* ── UNIFIED REVEAL ── */
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
     .card{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:20px;padding:22px;
       backdrop-filter:blur(16px);
       box-shadow:0 12px 40px rgba(44,26,14,.07);
-      transition:.35s ease;
-      transform:translateY(18px);opacity:0;
     }
-    .card.visible{transform:translateY(0);opacity:1}
     .card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(44,26,14,.11)}
     .card h3{
       font-family:'Cormorant Garamond',serif;
@@ -325,7 +323,6 @@
     .card p,.card li{color:var(--muted);line-height:1.75;font-size:.93rem}
     .card ul{padding-left:18px}
 
-    /* experience */
     .timeline{display:grid;gap:20px}
     .exp{
       display:grid;
@@ -336,10 +333,7 @@
       border-radius:20px;
       backdrop-filter:blur(16px);
       box-shadow:0 12px 40px rgba(44,26,14,.07);
-      transform:translateY(18px);opacity:0;
-      transition:.4s ease;
     }
-    .exp.visible{transform:translateY(0);opacity:1}
     .exp .role{
       font-family:'Cormorant Garamond',serif;
       font-weight:700;font-size:1.1rem;color:var(--accent);
@@ -350,7 +344,6 @@
     .exp li{margin-bottom:8px;color:#5a3820;line-height:1.65;font-size:.93rem}
     .exp li::marker{color:var(--accent3)}
 
-    /* projects */
     .projects .project{position:relative;overflow:hidden}
     .project::after{
       content:'';position:absolute;
@@ -368,7 +361,6 @@
       color:var(--accent2);font-size:.78rem;letter-spacing:.3px;
     }
 
-    /* chatbot */
     .chatbot{
       position:fixed;right:18px;bottom:18px;
       width:min(370px,calc(100% - 36px));
@@ -415,7 +407,6 @@
       margin-top:40px;font-size:.88rem;
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes blink{50%{opacity:0}}
     @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(107,58,31,.12)}50%{box-shadow:0 0 0 8px rgba(107,58,31,.04)}}
     @keyframes floatDust{
@@ -460,30 +451,30 @@
     <!-- HERO -->
     <section class="hero">
       <div>
-        <div class="eyebrow">Open to Oppurtunities</div>
-        <h1><span class="name-highlight">Rohith<br>Maddina</span></h1>
+        <div class="eyebrow reveal" style="transition-delay:0s">Open to Opportunities</div>
+        <h1 class="reveal" style="transition-delay:0.1s"><span class="name-highlight">Rohith<br>Maddina</span></h1>
 
-        <div class="title-wrap">
-  <div class="title-tape">
-    <div class="tape-inner" id="tapeInner">
-      <div class="tape-item">Software Engineer</div>
-      <div class="tape-item">Full Stack Developer</div>
-      <div class="tape-item">Java Backend Engineer</div>
-      <div class="tape-item">Spring Boot Developer</div>
-      <div class="tape-item">Cloud-Native Engineer</div>
-      <div class="tape-item">React Frontend Engineer</div>
-      <div class="tape-item">Microservices Architect</div>
-      <div class="tape-item">DevOps Practitioner</div>
-    </div>
-  </div>
-</div>
+        <div class="title-wrap reveal" style="transition-delay:0.2s">
+          <div class="title-tape">
+            <div class="tape-inner" id="tapeInner">
+              <div class="tape-item">Software Engineer</div>
+              <div class="tape-item">Full Stack Developer</div>
+              <div class="tape-item">Java Backend Engineer</div>
+              <div class="tape-item">Spring Boot Developer</div>
+              <div class="tape-item">Cloud-Native Engineer</div>
+              <div class="tape-item">React Frontend Engineer</div>
+              <div class="tape-item">Microservices Architect</div>
+              <div class="tape-item">DevOps Practitioner</div>
+            </div>
+          </div>
+        </div>
 
-        <p class="subtitle">
+        <p class="subtitle reveal" style="transition-delay:0.3s">
           I build elegant, high-performance digital products with Java, Spring Boot, React, AWS, and secure cloud-native architecture.
           My focus is scalable systems, polished interfaces, and measurable impact.
         </p>
 
-        <div class="pill-row">
+        <div class="pill-row reveal" style="transition-delay:0.4s">
           <div class="pill">Java 8–17</div>
           <div class="pill">Spring Boot Microservices</div>
           <div class="pill">React 18 / Angular</div>
@@ -492,13 +483,13 @@
           <div class="pill">Docker / Kubernetes</div>
         </div>
 
-        <div class="btns">
+        <div class="btns reveal" style="transition-delay:0.5s">
           <a class="btn primary" href="#projects">View Projects</a>
           <a class="btn secondary" href="mailto:rohithm5714@gmail.com">Contact Me</a>
         </div>
       </div>
 
-      <div class="hero-card">
+      <div class="hero-card reveal" style="transition-delay:0.25s">
         <div class="profile">
           <h2>Cloud-native builder with a product mindset</h2>
           <p>Designing resilient APIs, responsive user interfaces, and secure workflows for enterprise systems used by tens of thousands.</p>
@@ -514,20 +505,20 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title">About</h2>
-      <p class="section-sub">
+      <h2 class="section-title reveal">About</h2>
+      <p class="section-sub reveal" style="transition-delay:0.1s">
         Full Stack Java Developer with 4+ years shipping production-grade, cloud-native applications across financial services and healthcare. I work across frontend, backend, cloud, and security to create systems that are smooth to use and built to scale.
       </p>
       <div class="grid">
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0s">
           <h3>What I Build</h3>
           <p>Microservices, modern SPAs, secure REST APIs, and cloud delivery pipelines — from concept to production.</p>
         </div>
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0.12s">
           <h3>What I Optimize</h3>
           <p>Performance, reliability, clean architecture, and user experience. Latency reduction is a recurring theme.</p>
         </div>
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0.24s">
           <h3>What I Value</h3>
           <p>Elegant design, maintainable code, measurable business impact, and shipping things that actually work.</p>
         </div>
@@ -536,23 +527,23 @@
 
     <!-- SKILLS -->
     <section id="skills">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title reveal">Skills</h2>
       <div class="grid">
-        <div class="card reveal"><h3>Frontend</h3><p>React 18, Angular, Redux, TypeScript, HTML5, CSS3, Bootstrap</p></div>
-        <div class="card reveal"><h3>Backend</h3><p>Spring Boot, Spring MVC, Spring Security, Hibernate, JPA, SOAP/WSDL, JAX-B</p></div>
-        <div class="card reveal"><h3>Cloud & DevOps</h3><p>AWS (EC2, S3, Lambda, CloudFormation), Azure DevOps, Docker, Kubernetes, Jenkins, CircleCI</p></div>
-        <div class="card reveal"><h3>Security & Data</h3><p>OAuth2, JWT, Keycloak, Oracle, PostgreSQL, SQL Server, MongoDB, Redis</p></div>
-        <div class="card reveal"><h3>Data & Reporting</h3><p>SSIS, SSRS, Power BI, Python ML (scikit-learn), Anomaly Detection</p></div>
-        <div class="card reveal"><h3>Testing & Monitoring</h3><p>JUnit, Mockito, Jasmine, Karma, Postman, Splunk, Log4j</p></div>
+        <div class="card reveal" style="transition-delay:0s"><h3>Frontend</h3><p>React 18, Angular, Redux, TypeScript, HTML5, CSS3, Bootstrap</p></div>
+        <div class="card reveal" style="transition-delay:0.1s"><h3>Backend</h3><p>Spring Boot, Spring MVC, Spring Security, Hibernate, JPA, SOAP/WSDL, JAX-B</p></div>
+        <div class="card reveal" style="transition-delay:0.2s"><h3>Cloud & DevOps</h3><p>AWS (EC2, S3, Lambda, CloudFormation), Azure DevOps, Docker, Kubernetes, Jenkins, CircleCI</p></div>
+        <div class="card reveal" style="transition-delay:0.3s"><h3>Security & Data</h3><p>OAuth2, JWT, Keycloak, Oracle, PostgreSQL, SQL Server, MongoDB, Redis</p></div>
+        <div class="card reveal" style="transition-delay:0.4s"><h3>Data & Reporting</h3><p>SSIS, SSRS, Power BI, Python ML (scikit-learn), Anomaly Detection</p></div>
+        <div class="card reveal" style="transition-delay:0.5s"><h3>Testing & Monitoring</h3><p>JUnit, Mockito, Jasmine, Karma, Postman, Splunk, Log4j</p></div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title reveal">Experience</h2>
       <div class="timeline">
 
-        <div class="exp reveal">
+        <div class="exp reveal" style="transition-delay:0.1s">
           <div>
             <div class="role">Software Engineer</div>
             <div class="company">Capital One</div>
@@ -574,7 +565,7 @@
           </div>
         </div>
 
-        <div class="exp reveal">
+        <div class="exp reveal" style="transition-delay:0.2s">
           <div>
             <div class="role">Java Full Stack Developer</div>
             <div class="company">CVS Health</div>
@@ -599,47 +590,47 @@
 
     <!-- PROJECTS -->
     <section id="projects" class="projects">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-sub">
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <p class="section-sub reveal" style="transition-delay:0.1s">
         Production-aligned projects demonstrating financial, healthcare, DevOps, and ML engineering across the full stack.
       </p>
       <div class="grid">
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0s">
           <h3>FinFlow Payments Platform</h3>
           <p>Spring Boot payment orchestration system with Stripe integration, idempotent retry logic, webhook-based reconciliation, and end-to-end audit logging. Designed for financial-grade reliability.</p>
           <span class="tag">Java • Spring Boot • Stripe • AWS Lambda</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.1s">
           <h3>HealthSync Patient Portal</h3>
           <p>Angular SPA with Redux state management across 50+ dynamic forms, role-based access control, Redis caching, and real-time healthcare data interactions via REST and SOAP integrations.</p>
           <span class="tag">Angular • Redux • Spring Boot • OAuth2</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.2s">
           <h3>CloudOps Deployment Console</h3>
           <p>Full-stack DevOps dashboard providing deployment health visibility, automated rollback controls, pipeline status feeds, and Kubernetes observability for 20+ microservices.</p>
           <span class="tag">Docker • Kubernetes • Jenkins • Splunk</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.3s">
           <h3>AI Risk Signal Engine</h3>
           <p>Python-powered anomaly detection and churn prediction pipeline processing financial transaction data. Feeds scored risk signals into Power BI dashboards for business intelligence teams.</p>
           <span class="tag">Python • ML • SQL • Power BI</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.1s">
           <h3>SecureVault API Gateway</h3>
           <p>Zero-trust API gateway built with Spring Security, Keycloak, JWT, and OAuth2. Implements fine-grained RBAC, token refresh flows, and rate limiting across distributed microservices.</p>
           <span class="tag">Spring Security • Keycloak • JWT • OAuth2</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.2s">
           <h3>Claims Processing Serverless Engine</h3>
           <p>AWS Lambda + CloudFormation serverless pipeline handling healthcare claims events at 3× previous throughput. Replaced a 12-hour batch job with real-time event-driven processing.</p>
           <span class="tag">AWS Lambda • CloudFormation • Java • S3</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.3s">
           <h3>React Component Design System</h3>
           <p>Library of 30+ reusable TypeScript + React 18 UI components with storybook documentation, accessibility compliance, and shared design tokens. Reduced frontend build time by 40%.</p>
           <span class="tag">React 18 • TypeScript • Storybook • CSS</span>
         </div>
-        <div class="card project reveal">
+        <div class="card project reveal" style="transition-delay:0.4s">
           <h3>Observability & Incident Dashboard</h3>
           <p>Centralized Splunk-based observability platform with structured Log4j telemetry, custom alert rules, and live incident timelines — reducing MTTD for production issues by ~50%.</p>
           <span class="tag">Splunk • Log4j • Kubernetes • AWS</span>
@@ -649,21 +640,21 @@
 
     <!-- CONTACT -->
     <section id="contact">
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title reveal">Contact</h2>
       <div class="grid">
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0s">
           <h3>Email</h3>
           <p><a href="mailto:rohithm5714@gmail.com" style="color:var(--accent)">rohithm5714@gmail.com</a></p>
         </div>
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0.12s">
           <h3>Phone</h3>
           <p><a href="tel:+19258774566" style="color:var(--accent)">+1 925-877-4566</a></p>
         </div>
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0.24s">
           <h3>LinkedIn</h3>
           <p><a href="http://www.linkedin.com/in/rohithseshasaimaddina" target="_blank" style="color:var(--accent)">linkedin.com/in/rohithseshasaimaddina</a></p>
         </div>
-        <div class="card reveal">
+        <div class="card reveal" style="transition-delay:0.36s">
           <h3>GitHub</h3>
           <p>Add your GitHub URL here once the repository is live.</p>
         </div>
@@ -710,8 +701,7 @@
 
     /* ── TITLE TAPE LOOP ── */
     const tape = document.getElementById('tapeInner');
-    const items = tape.children;
-    const total = items.length;
+    const total = tape.children.length;
     let current = 0;
     setInterval(()=>{
       current = (current + 1) % total;
