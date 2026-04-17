@@ -442,6 +442,7 @@
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -470,9 +471,9 @@
         </div>
 
         <p class="subtitle reveal" style="transition-delay:0.3s">
-          I build elegant, high-performance digital products with Java, Spring Boot, React, AWS, and secure cloud-native architecture.
-          My focus is scalable systems, polished interfaces, and measurable impact.
-        </p>
+  4+ years building systems that handle real load — financial transactions at Capital One, healthcare claims at CVS Health.
+  I specialise in Java microservices, cloud-native architecture, and shipping things that hold up under pressure.
+</p>
 
         <div class="pill-row reveal" style="transition-delay:0.4s">
           <div class="pill">Java 8–17</div>
@@ -497,7 +498,7 @@
         <div class="stats">
           <div class="stat"><strong>4+</strong><span>Years Experience</span></div>
           <div class="stat"><strong>35%</strong><span>Faster Data Retrieval</span></div>
-          <div class="stat"><strong>40%</strong><span>Fewer Deploy Failures</span></div>
+          <div class="stat"><strong>10k</strong><span>Users Served</span></div>
           <div class="stat"><strong>60%</strong><span>Faster Page Loads</span></div>
         </div>
       </div>
@@ -509,20 +510,18 @@
       <p class="section-sub reveal" style="transition-delay:0.1s">
         Full Stack Java Developer with 4+ years shipping production-grade, cloud-native applications across financial services and healthcare. I work across frontend, backend, cloud, and security to create systems that are smooth to use and built to scale.
       </p>
-      <div class="grid">
-        <div class="card reveal" style="transition-delay:0s">
-          <h3>What I Build</h3>
-          <p>Microservices, modern SPAs, secure REST APIs, and cloud delivery pipelines — from concept to production.</p>
-        </div>
-        <div class="card reveal" style="transition-delay:0.12s">
-          <h3>What I Optimize</h3>
-          <p>Performance, reliability, clean architecture, and user experience. Latency reduction is a recurring theme.</p>
-        </div>
-        <div class="card reveal" style="transition-delay:0.24s">
-          <h3>What I Value</h3>
-          <p>Elegant design, maintainable code, measurable business impact, and shipping things that actually work.</p>
-        </div>
-      </div>
+      <div class="card reveal" style="transition-delay:0s">
+  <h3>Financial Services</h3>
+  <p>Built transaction and fraud-adjacent systems at Capital One — microservices handling high-throughput financial workflows with zero-trust security and 99.9%+ reliability targets.</p>
+</div>
+<div class="card reveal" style="transition-delay:0.12s">
+  <h3>Healthcare</h3>
+  <p>Modernised claims processing at CVS Health — replaced legacy batch pipelines with real-time APIs serving clinical and billing teams across a 200+ person engineering org.</p>
+</div>
+<div class="card reveal" style="transition-delay:0.24s">
+  <h3>Cloud & Platform</h3>
+  <p>Designed CI/CD pipelines, containerised workloads on AWS, and built observability tooling that cut incident detection time in half — infrastructure that ships with confidence.</p>
+</div>
     </section>
 
     <!-- SKILLS -->
@@ -539,61 +538,56 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2 class="section-title reveal">Experience</h2>
-      <div class="timeline">
+<section id="experience">
+  <h2 class="section-title reveal">Experience</h2>
+  <div class="timeline">
 
-        <div class="exp reveal" style="transition-delay:0.1s">
-          <div>
-            <div class="role">Software Engineer</div>
-            <div class="company">Capital One</div>
-            <div class="meta">Virginia — Feb 2024 – Present</div>
-          </div>
-          <div>
-            <ul>
-              <li>Architected and shipped 12+ Spring Boot microservices handling financial transactions and ticketing, improving system throughput by 30% and enabling horizontal scaling under peak load.</li>
-              <li>Reduced SQL query execution time by 35% through query plan analysis and indexing optimizations on Oracle and PostgreSQL, directly cutting p99 API latency for downstream consumers.</li>
-              <li>Integrated Stripe payment APIs with idempotent retry logic and webhook-based reconciliation, enabling secure end-to-end payment workflows.</li>
-              <li>Built a React 18 + TypeScript UI serving 10,000+ active users; cut average page load time by 25% via lazy loading, code splitting, and optimized Redux state management.</li>
-              <li>Engineered a reusable component library of 30+ shared UI elements, reducing frontend build time for new features by ~40% and enforcing design-system consistency.</li>
-              <li>Designed Jenkins + Docker + Kubernetes CI/CD pipelines supporting 20+ deployments per month while reducing deployment failures by 40% via automated rollback and smoke-test gates.</li>
-              <li>Containerized 8 microservices on AWS EC2/Lambda with auto-scaling, cutting cloud infrastructure cost by consolidating idle workloads.</li>
-              <li>Implemented centralized observability via Splunk dashboards and structured Log4j logging, reducing mean time to detection (MTTD) for production incidents by ~50%.</li>
-              <li>Enforced zero-trust authentication across all services using Spring Security, OAuth2, JWT, and Keycloak — passing quarterly security audits with zero critical findings.</li>
-              <li>Built Python-based ML models for churn prediction and anomaly detection on transaction data, feeding risk signals into downstream BI pipelines.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="exp reveal" style="transition-delay:0.2s">
-          <div>
-            <div class="role">Java Full Stack Developer</div>
-            <div class="company">CVS Health</div>
-            <div class="meta">Hartford, CT — Jun 2021 – Jul 2023</div>
-          </div>
-          <div>
-            <ul>
-              <li>Rebuilt patient-facing portal as an Angular SPA serving 8,000+ users; reduced page reload time by 60% compared to the legacy server-rendered application.</li>
-              <li>Implemented Redux state management across 50+ forms, eliminating validation inconsistencies and cutting client-reported form errors by ~45%.</li>
-              <li>Designed and delivered 20+ RESTful APIs using Spring Boot, Hibernate, and JPA, processing healthcare claims data for cross-functional clinical and billing teams.</li>
-              <li>Built SOAP/WSDL integrations enabling real-time data exchange with three external healthcare systems, replacing a batch flow that previously ran 12+ hours daily.</li>
-              <li>Reduced report generation time by 40% by rewriting slow stored procedures and introducing Redis-backed query result caching.</li>
-              <li>Automated build and deployment pipelines using Jenkins and Maven, reducing manual release effort by 70% and cutting deployment cycle time from 2 days to under 4 hours.</li>
-              <li>Provisioned AWS infrastructure via CloudFormation templates and deployed Lambda functions for serverless claims-processing events, supporting a 3× increase in data ingestion volume.</li>
-              <li>Implemented OAuth2 token-based authentication and API-level caching, improving security posture and API response times by 30% under concurrent load.</li>
-            </ul>
-          </div>
-        </div>
-
+    <div class="exp reveal" style="transition-delay:0.1s">
+      <div>
+        <div class="role">Software Engineer</div>
+        <div class="company">Capital One</div>
+        <div class="meta">Virginia — Feb 2024 – Present</div>
+        <div class="meta" style="margin-top:8px;font-style:italic;line-height:1.6">Supporting fraud detection and financial transaction infrastructure at enterprise scale.</div>
       </div>
-    </section>
+      <div>
+        <ul>
+          <li>Led end-to-end design of 12+ Spring Boot microservices handling financial transactions, improving system throughput by 30%.</li>
+          <li>Cut SQL query execution time by 35% via indexing optimizations on Oracle and PostgreSQL, directly reducing p99 API latency.</li>
+          <li>Built React 18 + TypeScript UI for 10,000+ users — reduced page load by 25% through lazy loading and optimized Redux state.</li>
+          <li>Designed Jenkins + Docker + Kubernetes CI/CD pipelines cutting deployment failures by 40% via automated rollback gates.</li>
+          <li>Enforced zero-trust auth across all services using OAuth2, JWT, and Keycloak — passed every quarterly security audit clean.</li>
+          <li>Worked within an Agile squad of 8 engineers shipping bi-weekly sprints across 3 product teams.</li>
+        </ul>
+      </div>
+    </div>
 
+    <div class="exp reveal" style="transition-delay:0.2s">
+      <div>
+        <div class="role">Java Full Stack Developer</div>
+        <div class="company">CVS Health</div>
+        <div class="meta">Hartford, CT — Jun 2021 – Jul 2023</div>
+        <div class="meta" style="margin-top:8px;font-style:italic;line-height:1.6">Modernising patient-facing systems handling healthcare claims across a 200+ person engineering org.</div>
+      </div>
+      <div>
+        <ul>
+          <li>Rebuilt patient portal as an Angular SPA for 8,000+ users — reduced page reload time by 60% over the legacy application.</li>
+          <li>Owned 20+ RESTful APIs using Spring Boot and JPA, processing healthcare claims consumed by clinical and billing teams daily.</li>
+          <li>Replaced a 12-hour daily batch flow with real-time SOAP/WSDL integrations across three external healthcare systems.</li>
+          <li>Automated Jenkins + Maven pipelines, cutting deployment cycle from 2 days to under 4 hours and manual effort by 70%.</li>
+          <li>Provisioned AWS Lambda + CloudFormation for serverless claims processing, supporting a 3× increase in data ingestion volume.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+    
     <!-- PROJECTS -->
     <section id="projects" class="projects">
       <h2 class="section-title reveal">Featured Projects</h2>
       <p class="section-sub reveal" style="transition-delay:0.1s">
-        Production-aligned projects demonstrating financial, healthcare, DevOps, and ML engineering across the full stack.
-      </p>
+  Built to mirror real production problems — not tutorials. Each project maps directly to work done at Capital One or CVS Health.
+</p>
       <div class="grid">
         <div class="card project reveal" style="transition-delay:0s">
           <h3>FinFlow Payments Platform</h3>
@@ -637,7 +631,22 @@
         </div>
       </div>
     </section>
-
+<!-- EDUCATION -->
+<section id="education">
+  <h2 class="section-title reveal">Education</h2>
+  <div class="exp reveal" style="transition-delay:0.1s">
+    <div>
+      <div class="role">M.S. Computer Science</div>
+      <div class="company">Montclair State University</div>
+      <div class="meta">New Jersey — Aug 2023 – May 2025</div>
+    </div>
+    <div>
+      <p style="color:var(--muted);line-height:1.75;font-size:.93rem">
+        Graduate coursework in distributed systems, cloud computing, and machine learning — applied directly to production work at Capital One during the program.
+      </p>
+    </div>
+  </div>
+</section>
     <!-- CONTACT -->
     <section id="contact">
       <h2 class="section-title reveal">Contact</h2>
