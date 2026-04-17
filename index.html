@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rohith Maddina - Full Stack Java Developer portfolio" />
-  <title>Rohith Maddina | Full Stack Developer</title>
+  <meta name="description" content="Rohith Maddina - Full Stack Java Developer Portfolio" />
+  <title>Rohith Maddina | Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 
   <style>
     :root{
-      --bg:#07111f;
-      --bg2:#0b1730;
-      --card:rgba(255,255,255,.08);
-      --card2:rgba(255,255,255,.12);
-      --text:#eaf2ff;
-      --muted:#a8b3c7;
-      --accent:#6ee7ff;
-      --accent2:#8b5cf6;
-      --success:#34d399;
-      --border:rgba(255,255,255,.16);
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --bg:#f7f8fc;
+      --bg2:#eef2f8;
+      --card:rgba(255,255,255,.68);
+      --card2:rgba(255,255,255,.82);
+      --text:#0f172a;
+      --muted:#5b6474;
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#14b8a6;
+      --border:rgba(15,23,42,.08);
+      --shadow:0 24px 70px rgba(15,23,42,.08);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -32,91 +31,202 @@
       font-family:'Inter',sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(110,231,255,.18), transparent 25%),
-        radial-gradient(circle at top right, rgba(139,92,246,.18), transparent 24%),
+        radial-gradient(circle at top left, rgba(37,99,235,.12), transparent 26%),
+        radial-gradient(circle at top right, rgba(124,58,237,.10), transparent 22%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       min-height:100vh;
       overflow-x:hidden;
+      cursor:none;
     }
 
     body::before{
       content:'';
       position:fixed;
       inset:0;
-      background:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:80px 80px;
-      mask-image:radial-gradient(circle at center, black, transparent 80%);
       pointer-events:none;
-      opacity:.25;
+      background-image:
+        radial-gradient(rgba(15,23,42,.06) 1px, transparent 1px),
+        radial-gradient(rgba(15,23,42,.04) 1px, transparent 1px);
+      background-size:3px 3px, 5px 5px;
+      background-position:0 0, 2px 2px;
+      opacity:.22;
+      mix-blend-mode:multiply;
+      animation:grainMove 10s linear infinite;
+      z-index:0;
     }
 
-    .container{width:min(1200px,92%);margin:0 auto}
+    .dust{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .dust span{
+      position:absolute;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:rgba(37,99,235,.10);
+      box-shadow:0 0 18px rgba(124,58,237,.10);
+      animation:floatDust linear infinite;
+      filter:blur(.2px);
+    }
+
+    .cursor{
+      width:18px;height:18px;
+      border-radius:50%;
+      position:fixed;
+      left:0;top:0;
+      pointer-events:none;
+      z-index:999;
+      transform:translate(-50%,-50%);
+      border:1px solid rgba(37,99,235,.45);
+      background:rgba(37,99,235,.10);
+      backdrop-filter:blur(4px);
+      transition:width .18s ease,height .18s ease,background .18s ease,border-color .18s ease;
+    }
+    .cursor.active{
+      width:52px;height:52px;
+      background:rgba(124,58,237,.10);
+      border-color:rgba(124,58,237,.35);
+    }
+
+    .container{width:min(1200px,92%);margin:0 auto;position:relative;z-index:1}
+
     .nav{
-      position:sticky;top:18px;z-index:50;
-      margin:18px auto 0;
+      position:sticky;top:16px;z-index:40;
+      margin:16px auto 0;
       width:min(1200px,92%);
       backdrop-filter:blur(20px);
-      background:rgba(8,15,30,.55);
+      background:rgba(255,255,255,.72);
       border:1px solid var(--border);
       border-radius:22px;
       box-shadow:var(--shadow);
       display:flex;justify-content:space-between;align-items:center;
       padding:16px 22px;
-      animation:slideDown .8s ease both;
     }
-    .brand{font-weight:800;letter-spacing:.5px}
-    .brand span{color:var(--accent)}
-    .nav a{color:var(--text);text-decoration:none;margin-left:18px;font-size:.95rem;opacity:.88}
+    .brand{
+      font-weight:800;
+      letter-spacing:.6px;
+      font-size:1.05rem;
+    }
+    .brand span{
+      color:var(--accent);
+    }
+    .nav a{
+      color:var(--text);
+      text-decoration:none;
+      margin-left:18px;
+      font-size:.95rem;
+      opacity:.84;
+    }
     .nav a:hover{color:var(--accent)}
 
     .hero{
-      padding:90px 0 40px;
+      padding:92px 0 42px;
       display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:28px;
+      grid-template-columns:1.15fr .85fr;
+      gap:30px;
       align-items:center;
       min-height:calc(100vh - 120px);
     }
 
-    .hero h1{
-      font-size:clamp(2.5rem,6vw,5.6rem);
-      line-height:.95;
-      letter-spacing:-2px;
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.12);
+      color:var(--accent);
+      font-weight:600;
       margin-bottom:18px;
-      animation:fadeUp .9s ease .1s both;
     }
-    .hero h1 .grad{
-      background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
+    .eyebrow::before{
+      content:'';
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(37,99,235,.12);
+    }
+
+    h1{
+      font-size:clamp(2.9rem,7vw,6rem);
+      line-height:.92;
+      letter-spacing:-2.8px;
+      margin-bottom:16px;
+    }
+    .name-highlight{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-    }
-    .subtitle{
-      font-size:1.1rem;
-      color:var(--muted);
-      max-width:760px;
-      line-height:1.8;
-      margin-bottom:28px;
-      animation:fadeUp .9s ease .2s both;
+      text-shadow:0 8px 30px rgba(37,99,235,.10);
     }
 
-    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+    .title-wrap{
+      font-size:clamp(1.05rem,2vw,1.35rem);
+      color:var(--muted);
+      margin-bottom:22px;
+      min-height:42px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+    }
+    .title-label{
+      color:var(--text);
+      font-weight:700;
+    }
+    .rotating-title{
+      position:relative;
+      display:inline-block;
+      min-width:320px;
+      font-weight:700;
+      color:var(--accent);
+    }
+    .rotating-title::after{
+      content:'';
+      display:inline-block;
+      width:2px;
+      height:1.05em;
+      background:var(--accent);
+      margin-left:6px;
+      transform:translateY(2px);
+      animation:blink .85s infinite;
+    }
+
+    .subtitle{
+      font-size:1.05rem;
+      color:var(--muted);
+      max-width:740px;
+      line-height:1.85;
+      margin-bottom:28px;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:28px;
+    }
     .pill{
       padding:10px 14px;
       border:1px solid var(--border);
-      background:var(--card);
+      background:rgba(255,255,255,.72);
       border-radius:999px;
-      backdrop-filter:blur(16px);
       font-size:.92rem;
-      color:#d9e6ff;
-      animation:fadeUp .9s ease .3s both;
+      color:#334155;
+      box-shadow:0 8px 20px rgba(15,23,42,.04);
     }
 
     .btns{display:flex;flex-wrap:wrap;gap:14px}
     .btn{
-      display:inline-flex;align-items:center;gap:10px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       padding:14px 20px;
       border-radius:14px;
       text-decoration:none;
@@ -126,55 +236,68 @@
     }
     .btn.primary{
       background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#08111e;
-      box-shadow:0 10px 30px rgba(110,231,255,.25);
+      color:#fff;
+      box-shadow:0 12px 30px rgba(37,99,235,.18);
     }
     .btn.secondary{
       color:var(--text);
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.78);
       border-color:var(--border);
     }
     .btn:hover{transform:translateY(-3px) scale(1.01)}
 
     .hero-card{
-      position:relative;
-      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.65));
       border:1px solid var(--border);
       border-radius:28px;
       padding:26px;
       box-shadow:var(--shadow);
-      backdrop-filter:blur(20px);
-      animation:floatCard 6s ease-in-out infinite;
+      backdrop-filter:blur(18px);
+      position:relative;
+      overflow:hidden;
     }
+    .hero-card::before{
+      content:'';
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle, rgba(37,99,235,.10), transparent 35%);
+      animation:slowGlow 8s ease-in-out infinite;
+    }
+
     .profile{
-      height:300px;
+      position:relative;
+      z-index:1;
+      min-height:310px;
       border-radius:22px;
       background:
-        radial-gradient(circle at top, rgba(110,231,255,.35), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(139,92,246,.35), transparent 35%),
-        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.14);
+        radial-gradient(circle at top, rgba(37,99,235,.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(124,58,237,.14), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,.90), rgba(241,245,249,.88));
+      border:1px solid rgba(15,23,42,.06);
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
-      padding:22px;
-      overflow:hidden;
-      position:relative;
+      padding:24px;
     }
-    .profile::after{
-      content:'AI • CLOUD • JAVA • REACT';
-      position:absolute;top:18px;left:18px;
-      font-size:.8rem;letter-spacing:4px;
-      color:rgba(255,255,255,.75);
+    .profile h2{
+      font-size:1.5rem;
+      margin-bottom:8px;
     }
+    .profile p{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
     .stats{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:14px;
       margin-top:16px;
+      position:relative;
+      z-index:1;
     }
     .stat{
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.72);
       border:1px solid var(--border);
       border-radius:18px;
       padding:16px;
@@ -189,7 +312,12 @@
       margin-bottom:16px;
       letter-spacing:-1px;
     }
-    .section-sub{color:var(--muted);max-width:760px;line-height:1.8;margin-bottom:26px}
+    .section-sub{
+      color:var(--muted);
+      max-width:760px;
+      line-height:1.8;
+      margin-bottom:26px;
+    }
 
     .grid{
       display:grid;
@@ -204,7 +332,7 @@
       backdrop-filter:blur(18px);
       box-shadow:var(--shadow);
       transition:.35s ease;
-      transform:translateY(18px);
+      transform:translateY(16px);
       opacity:0;
     }
     .card.visible{transform:translateY(0);opacity:1}
@@ -213,10 +341,7 @@
     .card p,.card li{color:var(--muted);line-height:1.7;font-size:.95rem}
     .card ul{padding-left:18px}
 
-    .timeline{
-      display:grid;
-      gap:18px;
-    }
+    .timeline{display:grid;gap:18px}
     .exp{
       display:grid;
       grid-template-columns:220px 1fr;
@@ -230,16 +355,13 @@
     .exp .role{font-weight:700;font-size:1.05rem}
     .exp .meta{color:var(--muted);font-size:.92rem;margin-top:6px}
     .exp ul{padding-left:18px;margin-top:12px}
-    .exp li{margin-bottom:8px;color:#d7e2f5;line-height:1.6}
+    .exp li{margin-bottom:8px;color:#334155;line-height:1.6}
 
-    .projects .project{
-      position:relative;
-      overflow:hidden;
-    }
+    .projects .project{position:relative;overflow:hidden}
     .project::before{
       content:'';
       position:absolute;inset:-2px;
-      background:linear-gradient(135deg, rgba(110,231,255,.18), rgba(139,92,246,.18), transparent 70%);
+      background:linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.10), transparent 70%);
       opacity:0;
       transition:.4s ease;
     }
@@ -249,18 +371,18 @@
       margin-top:12px;
       padding:7px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      color:#dbe7ff;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.10);
+      color:var(--accent);
       font-size:.8rem;
     }
 
     .chatbot{
       position:fixed;
-      right:20px;
-      bottom:20px;
-      width:min(380px,calc(100% - 40px));
-      background:rgba(7,17,31,.9);
+      right:18px;
+      bottom:18px;
+      width:min(380px,calc(100% - 36px));
+      background:rgba(255,255,255,.85);
       border:1px solid var(--border);
       border-radius:24px;
       box-shadow:var(--shadow);
@@ -270,52 +392,85 @@
     }
     .chat-head{
       padding:14px 16px;
-      display:flex;justify-content:space-between;align-items:center;
-      background:rgba(255,255,255,.05);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(37,99,235,.06);
       cursor:pointer;
     }
     .chat-body{display:none;padding:16px}
     .chatbot.open .chat-body{display:block}
-    .messages{display:grid;gap:10px;max-height:220px;overflow:auto;padding-right:4px}
+    .messages{
+      display:grid;
+      gap:10px;
+      max-height:220px;
+      overflow:auto;
+      padding-right:4px;
+    }
     .msg{
-      padding:12px 14px;border-radius:16px;font-size:.92rem;line-height:1.6;
+      padding:12px 14px;
+      border-radius:16px;
+      font-size:.92rem;
+      line-height:1.6;
       max-width:92%;
     }
-    .msg.ai{background:rgba(110,231,255,.1);border:1px solid rgba(110,231,255,.15)}
-    .msg.user{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.16);margin-left:auto}
-    .chat-input{
-      display:flex;gap:10px;margin-top:12px
-    }
+    .msg.ai{background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.10)}
+    .msg.user{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.10);margin-left:auto}
+    .chat-input{display:flex;gap:10px;margin-top:12px}
     .chat-input input{
-      flex:1;padding:12px 14px;border-radius:14px;border:1px solid var(--border);
-      background:rgba(255,255,255,.05);color:var(--text);outline:none;
+      flex:1;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.9);
+      color:var(--text);
+      outline:none;
     }
     .chat-input button{
-      padding:12px 14px;border:none;border-radius:14px;cursor:pointer;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111e;font-weight:700;
+      padding:12px 14px;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff;
+      font-weight:700;
     }
 
     footer{
       padding:30px 0 44px;
       color:var(--muted);
       text-align:center;
-      border-top:1px solid rgba(255,255,255,.08);
+      border-top:1px solid rgba(15,23,42,.08);
       margin-top:40px;
     }
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes slideDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes blink{50%{opacity:0}}
+    @keyframes grainMove{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-2%,2%,0)}}
+    @keyframes floatDust{
+      0%{transform:translateY(0) translateX(0);opacity:0}
+      10%{opacity:.55}
+      100%{transform:translateY(-120vh) translateX(40px);opacity:0}
+    }
+    @keyframes slowGlow{
+      0%,100%{transform:translate(0,0) scale(1)}
+      50%{transform:translate(10%,8%) scale(1.08)}
+    }
 
     @media (max-width: 900px){
       .hero,.exp{grid-template-columns:1fr}
       .nav{flex-direction:column;gap:12px}
       .nav a{margin:0 10px}
       .hero{padding-top:50px}
+      body{cursor:auto}
+      .cursor{display:none}
     }
   </style>
 </head>
 <body>
+  <div class="dust" id="dust"></div>
+  <div class="cursor" id="cursor"></div>
+
   <nav class="nav">
     <div class="brand">ROHITH<span>.</span></div>
     <div>
@@ -330,10 +485,17 @@
   <main class="container">
     <section class="hero">
       <div>
-        <h1>Software Engineer<br><span class="grad">Full Stack Java Developer</span></h1>
+        <div class="eyebrow">Available for software engineering roles</div>
+        <h1><span class="name-highlight">Rohith Maddina</span></h1>
+
+        <div class="title-wrap">
+          <span class="title-label">Software Engineer /</span>
+          <span class="rotating-title" id="rotatingTitle">Full Stack Developer</span>
+        </div>
+
         <p class="subtitle">
-          I build high-performance, cloud-native platforms with Java, Spring Boot, React, AWS, and secure API architectures.
-          I focus on elegant UX, scalable backend systems, and measurable outcomes.
+          I build elegant, high-performance digital products with Java, Spring Boot, React, AWS, and secure cloud-native architecture.
+          My focus is scalable systems, polished interfaces, and measurable impact.
         </p>
 
         <div class="pill-row">
@@ -346,20 +508,18 @@
 
         <div class="btns">
           <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn secondary" href="mailto:rohithm5714@gmail.com">Hire Me</a>
+          <a class="btn secondary" href="mailto:rohithm5714@gmail.com">Contact Me</a>
         </div>
       </div>
 
       <div class="hero-card">
         <div class="profile">
-          <div>
-            <h2 style="font-size:1.5rem;margin-bottom:8px;">Building enterprise-grade experiences</h2>
-            <p style="color:var(--muted);line-height:1.7;">Cloud systems, responsive UIs, secure integrations, and AI-assisted workflows.</p>
-          </div>
+          <h2>Cloud-native builder with a product mindset</h2>
+          <p>Designing resilient APIs, responsive user interfaces, and secure workflows for enterprise systems.</p>
         </div>
         <div class="stats">
           <div class="stat"><strong>4+</strong><span>Years Experience</span></div>
-          <div class="stat"><strong>35%</strong><span>Faster Data Retrieval</span></div>
+          <div class="stat"><strong>35%</strong><span>Faster Retrieval</span></div>
           <div class="stat"><strong>40%</strong><span>Fewer Deploy Failures</span></div>
           <div class="stat"><strong>60%</strong><span>Faster Page Loads</span></div>
         </div>
@@ -369,20 +529,20 @@
     <section id="about">
       <h2 class="section-title">About</h2>
       <p class="section-sub">
-        Full Stack Java Developer with experience across financial services and healthcare, delivering scalable systems, secure APIs, and polished frontends.
+        I work across frontend, backend, cloud, and security to create systems that feel smooth to use and are easy to scale.
       </p>
       <div class="grid">
         <div class="card reveal">
           <h3>What I do</h3>
-          <p>Build microservices, modern SPAs, and cloud-native workflows with a strong focus on performance and reliability.</p>
+          <p>Build microservices, modern SPAs, secure APIs, and cloud delivery pipelines.</p>
         </div>
         <div class="card reveal">
-          <h3>How I work</h3>
-          <p>Engineer clean architecture, automate delivery, and use observability to reduce incident time and improve stability.</p>
+          <h3>What I optimize</h3>
+          <p>Performance, reliability, clean architecture, and user experience.</p>
         </div>
         <div class="card reveal">
           <h3>What I value</h3>
-          <p>Strong UI polish, maintainable code, and systems that make a measurable business impact.</p>
+          <p>Elegant design, maintainable code, and measurable business impact.</p>
         </div>
       </div>
     </section>
@@ -393,7 +553,7 @@
         <div class="card reveal"><h3>Frontend</h3><p>React 18, Angular, Redux, TypeScript, HTML5, CSS3, Bootstrap</p></div>
         <div class="card reveal"><h3>Backend</h3><p>Spring Boot, Spring MVC, Spring Security, Hibernate, JPA</p></div>
         <div class="card reveal"><h3>Cloud & DevOps</h3><p>AWS, Azure DevOps, Docker, Kubernetes, Jenkins, CircleCI</p></div>
-        <div class="card reveal"><h3>Data & Security</h3><p>Oracle, PostgreSQL, MongoDB, OAuth2, JWT, Keycloak</p></div>
+        <div class="card reveal"><h3>Security & Data</h3><p>OAuth2, JWT, Keycloak, Oracle, PostgreSQL, MongoDB</p></div>
       </div>
     </section>
 
@@ -407,13 +567,12 @@
           </div>
           <div>
             <ul>
-              <li>Built 12+ Spring Boot microservices for transaction and ticketing workflows.</li>
-              <li>Cut page load time by 25% with React 18 + TypeScript optimizations.</li>
-              <li>Reduced deployment failures by 40% with Jenkins, Docker, and Kubernetes automation.</li>
+              <li>Built Spring Boot microservices for financial workflows and ticketing systems.</li>
+              <li>Improved React UI performance with code splitting and lazy loading.</li>
+              <li>Strengthened CI/CD with Docker, Kubernetes, Jenkins, and automated rollback gates.</li>
             </ul>
           </div>
         </div>
-
         <div class="exp reveal">
           <div>
             <div class="role">Java Full Stack Developer — CVS Health</div>
@@ -421,9 +580,9 @@
           </div>
           <div>
             <ul>
-              <li>Rebuilt a patient-facing portal in Angular and reduced reload time by 60%.</li>
-              <li>Delivered 20+ REST APIs and improved healthcare claims workflows.</li>
-              <li>Automated release pipelines and shortened deployment cycles from 2 days to under 4 hours.</li>
+              <li>Delivered Angular portal improvements that cut reload time by 60%.</li>
+              <li>Built healthcare REST APIs and SOAP integrations for external systems.</li>
+              <li>Reduced deployment cycle time from 2 days to under 4 hours through automation.</li>
             </ul>
           </div>
         </div>
@@ -433,27 +592,27 @@
     <section id="projects" class="projects">
       <h2 class="section-title">Featured Projects</h2>
       <p class="section-sub">
-        These projects are tailored to your background and the kind of work you likely want to showcase as a full stack developer.
+        These project ideas align with your resume and are strong choices for a GitHub portfolio.
       </p>
       <div class="grid">
         <div class="card project reveal">
           <h3>FinFlow Payments Platform</h3>
-          <p>Secure Spring Boot payment orchestration system with Stripe integration, idempotent retries, webhook reconciliation, and audit-ready transaction tracking.</p>
+          <p>Spring Boot payment orchestration system with Stripe integration, idempotent retries, audit logs, and secure reconciliation.</p>
           <span class="tag">Java • Spring Boot • Stripe • AWS</span>
         </div>
         <div class="card project reveal">
           <h3>HealthSync Patient Portal</h3>
-          <p>Angular-based healthcare portal with dynamic forms, role-based access, caching, and API integration for appointments, claims, and clinical data.</p>
-          <span class="tag">Angular • Redux • REST APIs • OAuth2</span>
+          <p>Angular-based portal with role-based access, dynamic forms, caching, and real-time healthcare data interactions.</p>
+          <span class="tag">Angular • Redux • REST • OAuth2</span>
         </div>
         <div class="card project reveal">
           <h3>CloudOps Deployment Console</h3>
-          <p>DevOps dashboard for deployment visibility, rollback controls, pipeline health, and observability insights across Kubernetes services.</p>
+          <p>DevOps dashboard for deployment health, rollback controls, pipeline visibility, and Kubernetes observability.</p>
           <span class="tag">Docker • Kubernetes • Jenkins • Splunk</span>
         </div>
         <div class="card project reveal">
           <h3>AI Risk Signal Engine</h3>
-          <p>Python-based anomaly detection and churn prediction pipeline that transforms transaction data into actionable risk indicators.</p>
+          <p>Python-powered anomaly detection and churn prediction pipeline for transaction monitoring and business intelligence.</p>
           <span class="tag">Python • ML • SQL • BI</span>
         </div>
       </div>
@@ -472,7 +631,7 @@
         </div>
         <div class="card reveal">
           <h3>GitHub</h3>
-          <p>Replace this with your GitHub profile link once you connect your repositories.</p>
+          <p>Add your GitHub profile link here after you create the repository.</p>
         </div>
       </div>
     </section>
@@ -485,20 +644,41 @@
     </div>
     <div class="chat-body">
       <div class="messages" id="messages">
-        <div class="msg ai">Hi, I’m Rohith’s AI assistant. I can answer questions about skills, experience, or projects.</div>
+        <div class="msg ai">Hi, I’m Rohith’s AI assistant. Ask me about skills, experience, or projects.</div>
       </div>
       <div class="chat-input">
-        <input id="userInput" placeholder="Ask about my background..." />
+        <input id="userInput" placeholder="Ask something..." />
         <button onclick="sendMessage()">Send</button>
       </div>
     </div>
   </div>
 
-  <footer>
-    Designed for Rohith Maddina — Full Stack Java Developer
-  </footer>
+  <footer>Designed for Rohith Maddina — Full Stack Java Developer</footer>
 
   <script>
+    const rotatingTitles = [
+      "Full Stack Developer",
+      "Software Engineer",
+      "Java Backend Engineer",
+      "Spring Boot Developer",
+      "Cloud-Native Engineer",
+      "React Frontend Engineer",
+      "Microservices Architect"
+    ];
+    let titleIndex = 0;
+    const titleEl = document.getElementById("rotatingTitle");
+
+    setInterval(() => {
+      titleEl.style.opacity = 0;
+      titleEl.style.transform = "translateY(6px)";
+      setTimeout(() => {
+        titleIndex = (titleIndex + 1) % rotatingTitles.length;
+        titleEl.textContent = rotatingTitles[titleIndex];
+        titleEl.style.opacity = 1;
+        titleEl.style.transform = "translateY(0)";
+      }, 250);
+    }, 2200);
+
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
@@ -518,6 +698,7 @@
       const messages = document.getElementById('messages');
       const text = input.value.trim();
       if(!text) return;
+
       const user = document.createElement('div');
       user.className = 'msg user';
       user.textContent = text;
@@ -526,16 +707,52 @@
       const reply = document.createElement('div');
       reply.className = 'msg ai';
       const q = text.toLowerCase();
+
       if(q.includes('experience')) reply.textContent = 'Rohith has 4+ years of experience across financial services and healthcare, focused on Java, Spring Boot, React, AWS, and CI/CD.';
       else if(q.includes('project')) reply.textContent = 'Featured projects include a payments platform, a healthcare portal, a DevOps console, and an AI risk engine.';
-      else if(q.includes('skills')) reply.textContent = 'Core skills include Java, Spring Boot, React, Angular, AWS, Docker, Kubernetes, OAuth2, JWT, and SQL.';
+      else if(q.includes('skill')) reply.textContent = 'Core skills include Java, Spring Boot, React, Angular, AWS, Docker, Kubernetes, OAuth2, JWT, and SQL.';
       else reply.textContent = 'I can help with Rohith’s skills, projects, experience, and contact details.';
+
       setTimeout(() => {
         messages.appendChild(reply);
         messages.scrollTop = messages.scrollHeight;
-      }, 500);
+      }, 450);
 
       input.value = '';
+    }
+
+    const cursor = document.getElementById('cursor');
+    let mx = 0, my = 0, cx = 0, cy = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+    });
+
+    function animateCursor(){
+      cx += (mx - cx) * 0.14;
+      cy += (my - cy) * 0.14;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, .chat-head, .pill, .card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+
+    const dust = document.getElementById('dust');
+    for(let i=0;i<28;i++){
+      const s = document.createElement('span');
+      s.style.left = Math.random()*100 + 'vw';
+      s.style.top = (100 + Math.random()*40) + 'vh';
+      s.style.animationDuration = (12 + Math.random()*16) + 's';
+      s.style.animationDelay = (Math.random()*8) + 's';
+      s.style.opacity = (0.15 + Math.random()*0.35);
+      s.style.transform = `scale(${0.6 + Math.random()*1.4})`;
+      dust.appendChild(s);
     }
   </script>
 </body>
